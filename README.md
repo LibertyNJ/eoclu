@@ -11,6 +11,18 @@ users who are curious and may be new to this kind of thing, but also offer more
 advanced features for users who want to use it to compose a larger script or
 other program.
 
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0
+  ([LICENSE-APACHE](LICENSE-APACHE) or
+  <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT License
+  ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+
+at your option.
+
 ## CCP Proprietary Notice
 
 This is a third-party application for EVE Online which utilizes licensed
