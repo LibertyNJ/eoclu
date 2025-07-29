@@ -10,3 +10,11 @@ the Tranquility server cluster. This utility is designed to be approachable by
 users who are curious and may be new to this kind of thing, but also offer more
 advanced features for users who want to use it to compose a larger script or
 other program.
+
+## CCP Proprietary Notice
+
+This is a third-party application for EVE Online which makes use of various
+licensed materials under a developer license agreement with CCP hf.
+
+> © 2014 CCP hf. All rights reserved. "EVE", "EVE Online", "CCP", and all
+> related logos and images are trademarks or registered trademarks of CCP hf.
