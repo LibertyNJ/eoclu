@@ -13,8 +13,10 @@ other program.
 
 ## CCP Proprietary Notice
 
-This is a third-party application for EVE Online which makes use of various
-licensed materials under a developer license agreement with CCP hf.
+This is a third-party application for EVE Online which utilizes licensed
+materials according to the terms and conditions of a
+[developer license agreement](https://developers.eveonline.com/license-agreement)
+with CCP hf.
 
 > © 2014 CCP hf. All rights reserved. "EVE", "EVE Online", "CCP", and all
 > related logos and images are trademarks or registered trademarks of CCP hf.
