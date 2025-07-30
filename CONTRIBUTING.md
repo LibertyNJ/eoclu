@@ -19,3 +19,10 @@ Please check if the
 [bug has already been reported](https://github.com/LibertyNJ/eoclu/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 first. If it has not,
 [report a bug here](https://github.com/LibertyNJ/eoclu/issues/new?template=BUG_REPORT.yml).
+
+## Feature Requests
+
+Please check if the
+[feature has already been requested](https://github.com/LibertyNJ/eoclu/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
+first. If it has not,
+[request a feature here](https://github.com/LibertyNJ/eoclu/issues/new?template=FEATURE_REQUEST.yml).
