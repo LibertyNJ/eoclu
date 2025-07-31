@@ -7,12 +7,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to fill out a bug report! Please enter a
-        short, descriptive title above. If EOCLU prompted you to include any
-        details, be sure to do so. If you are reporting a security
-        vulnerability, please do not complete this bug report. See the
-        [security policy](https://github.com/LibertyNJ/eoclu?tab=security-ov-file#readme)
-        instead.
+        Thank you for taking the time to fill out a bug report!
+
+        Please enter a short, descriptive title above.
+
+        If you are reporting a security vulnerability, please do not complete this bug
+        report. See the [security policy](https://github.com/LibertyNJ/eoclu?tab=security-ov-file#readme) instead.
+
+        If EOCLU prompted you to include any details, please be sure to include them below.
   - type: input
     id: version
     attributes:
