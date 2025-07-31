@@ -31,3 +31,17 @@ first. If it has not,
 
 You can ask questions and engage with others about the project in
 [discussions](https://github.com/LibertyNJ/eoclu/discussions).
+
+## Branch Naming Conventions
+
+Branch names should be in `kebab-case`.
+
+### Prefixes
+
+Branches that impact the functionality of EOCLU in a way that is noticeable to
+users should follow the prefix conventions below.
+
+| Impact                 | Prefix     |
+| ---------------------- | ---------- |
+| Bug fix                | `fix-`     |
+| Feature implementation | `feature-` |
