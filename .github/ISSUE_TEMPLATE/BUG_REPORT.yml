@@ -1,0 +1,70 @@
+name: Report a bug
+description: Report a bug to help improve EOCLU.
+title: "Please Enter a Short, Descriptive Title"
+labels: ["bug"]
+assignees:
+  - LibertyNJ
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out a bug report! If EOCLU
+        prompted you to include any details, be sure to do so. If you are
+        reporting a security vulnerability, please do not complete this bug
+        report. See the
+        [security policy](https://github.com/LibertyNJ/eoclu?tab=security-ov-file#readme)
+        instead.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: |
+        Which version of EOCLU are you running? (run eoclu --version)
+    validations:
+      required: true
+  - type: dropdown
+    id: distribution
+    attributes:
+      label: Distribution
+      description: Which distribution of EOCLU are you running?
+      options:
+        - Built from source
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      description: |
+        What command did you run?  (e.g., eoclu get-character --name "Isamon
+        Itinen" --debug)
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        Describe the scenario and provide as many details as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Copy and paste any relevant log output.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: |
+        By submitting this bug report, you agree to follow our
+        [Code of Conduct](https://github.com/LibertyNJ/eoclu?tab=coc-ov-file#readme).
+      options:
+        - label: I agree to follow this project’s Code of Conduct.
+          required: true
