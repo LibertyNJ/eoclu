@@ -41,7 +41,6 @@ body:
       description: |
         What command did you run?  (e.g., eoclu get-character --name "Isamon
         Itinen" --debug)
-      render: shell
     validations:
       required: true
   - type: textarea
