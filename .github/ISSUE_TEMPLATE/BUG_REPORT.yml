@@ -1,6 +1,5 @@
 name: Report a bug
 description: Report a bug to help improve EOCLU.
-title: "Please Enter a Short, Descriptive Title"
 labels: ["bug"]
 assignees:
   - LibertyNJ
@@ -8,10 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to fill out a bug report! If EOCLU
-        prompted you to include any details, be sure to do so. If you are
-        reporting a security vulnerability, please do not complete this bug
-        report. See the
+        Thank you for taking the time to fill out a bug report! Please enter a
+        short, descriptive title above. If EOCLU prompted you to include any
+        details, be sure to do so. If you are reporting a security
+        vulnerability, please do not complete this bug report. See the
         [security policy](https://github.com/LibertyNJ/eoclu?tab=security-ov-file#readme)
         instead.
   - type: input
