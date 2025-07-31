@@ -28,9 +28,9 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: | 
+      description: |
         By submitting this feature request, you agree to follow our
-        [Code of Conduct](https://github.com/LibertyNJ/eoclu?tab=coc-ov-file#readme). 
+        [Code of Conduct](https://github.com/LibertyNJ/eoclu?tab=coc-ov-file#readme).
       options:
         - label: I agree to follow this project’s Code of Conduct.
           required: true
