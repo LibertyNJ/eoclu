@@ -1,0 +1,13 @@
+[package]
+name = "eoclu"
+version = "0.0.0"
+categories = ["command-line-utilities", "games"]
+edition = "2024"
+keywords = ["eve", "eve_online"]
+license = "MIT OR Apache-2.0"
+publish = false
+repository = "https://github.com/LibertyNJ/eoclu/"
+rust-version = "1.88"
+description = "A command line utility for EVE Online by CCP Games"
+
+[dependencies]
