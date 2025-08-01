@@ -50,3 +50,23 @@ jobs:
         run: |
           cargo clippy --verbose \
           -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic
+  test:
+    name: Test ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux
+            runner: ubuntu-latest
+          - name: macOS
+            runner: macos-latest
+          - name: Windows
+            runner: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Test
+        run: cargo test --verbose
