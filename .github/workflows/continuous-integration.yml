@@ -30,3 +30,11 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Build
         run: cargo build --locked --verbose
+  check-format:
+    name: Check format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check format
+        run: cargo fmt --all --check --verbose
