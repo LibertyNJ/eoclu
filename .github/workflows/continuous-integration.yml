@@ -10,26 +10,6 @@ concurrency:
 env:
   RUSTFLAGS: -Dwarnings
 jobs:
-  build:
-    name: Build ${{ matrix.name }}
-    runs-on: ${{ matrix.runner }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Linux
-            runner: ubuntu-latest
-          - name: macOS
-            runner: macos-latest
-          - name: Windows
-            runner: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cache
-        uses: Swatinem/rust-cache@v2
-      - name: Build
-        run: cargo build --locked --verbose
   check-format:
     name: Check format
     runs-on: ubuntu-latest
@@ -50,6 +30,26 @@ jobs:
         run: |
           cargo clippy --verbose \
           -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux
+            runner: ubuntu-latest
+          - name: macOS
+            runner: macos-latest
+          - name: Windows
+            runner: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --locked --verbose
   test:
     name: Test ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
