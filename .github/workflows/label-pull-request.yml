@@ -1,5 +1,5 @@
 name: Label Pull Request
-run-name: "Label Pull Request ${{ github.event.pull_request.number }}"
+run-name: "Label PR ${{ github.event.pull_request.number }}"
 on: pull_request_target
 concurrency:
   group: "${{ github.workflow }}-${{ github.event.pull_request.number }}"

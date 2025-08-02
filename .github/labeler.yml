@@ -1,6 +1,9 @@
 cargo:
   - changed-files:
       - any-glob-to-any-file: ["Cargo.toml", "Cargo.lock"]
+changelog:
+  - changed-files:
+      - any-glob-to-any-file: "CHANGELOG.md"
 documentation:
   - changed-files:
       - any-glob-to-any-file: "*.md"
