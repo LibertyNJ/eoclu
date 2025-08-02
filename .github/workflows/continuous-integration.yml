@@ -1,5 +1,5 @@
 name: Continuous Integration
-run-name: "Continuous Integration of ${{ github.ref_name }}"
+run-name: "CI of PR ${{ github.event.pull_request.number }}"
 on:
   pull_request:
     branches:
