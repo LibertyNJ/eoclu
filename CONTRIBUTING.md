@@ -32,16 +32,19 @@ first. If it has not,
 You can ask questions and engage with others about the project in
 [discussions](https://github.com/LibertyNJ/eoclu/discussions).
 
-## Branch Naming Conventions
+## Maintaining the Changelog
 
-Branch names should be in `kebab-case`.
+All changes to features, deprecations of features, bug fixes, and security
+patches should be recorded in [CHANGELOG.md](CHANGELOG.md), which follows the
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/) guidelines.
 
-### Prefixes
+All breaking changes should be prefixed with "**BREAKING**: ", and moved to the
+beginning of their respective sections.
 
-Branches that impact the functionality of EOCLU in a way that is noticeable to
-users should follow the prefix conventions below.
+For example:
 
-| Impact                 | Prefix     |
-| ---------------------- | ---------- |
-| Bug fix                | `fix-`     |
-| Feature implementation | `feature-` |
+```markdown
+### Changed
+
+- **BREAKING**: Made a backward incompatible change to a public interface.
+```
