@@ -7,16 +7,6 @@ changelog:
 documentation:
   - changed-files:
       - any-glob-to-any-file: "*.md"
-feature:
-  - all:
-    - changed-files:
-      - any-glob-to-any-file: ["Cargo.toml", "Cargo.lock", "src/**/*"]
-    - head-branch: ["^feature"]
-fix:
-  - all:
-    - changed-files:
-      - any-glob-to-any-file: ["Cargo.toml", "Cargo.lock", "src/**/*"]
-    - head-branch: ["^fix"]
 git:
   - changed-files:
       - any-glob-to-any-file: ".gitignore"
