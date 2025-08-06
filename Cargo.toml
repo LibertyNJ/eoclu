@@ -11,3 +11,4 @@ rust-version = "1.88"
 description = "A command line utility for EVE Online by CCP Games"
 
 [dependencies]
+clap = { version = "4.5.43", features = ["derive"] }
