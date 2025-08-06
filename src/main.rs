@@ -7,5 +7,5 @@
 //! compose a larger script or other program.
 
 fn main() {
-    println!("Hello, world!");
+    eoclu::run();
 }
