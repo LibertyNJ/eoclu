@@ -12,3 +12,6 @@ description = "A command line utility for EVE Online by CCP Games"
 
 [dependencies]
 clap = { version = "4.5.43", features = ["derive"] }
+
+[dev-dependencies]
+assert_cmd = "2.0.17"
