@@ -4,6 +4,10 @@
 //!
 //! This crate is intended for use by the EOCLU binary.
 
+use clap::Parser;
+
+use cli::Cli;
+
 mod cli;
 
 /// Runs EOCLU.
@@ -17,5 +21,5 @@ mod cli;
 /// eoclu::run();
 /// ```
 pub fn run() {
-    println!("Hello, world!");
+    Cli::parse();
 }
