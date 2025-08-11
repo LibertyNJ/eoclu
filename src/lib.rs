@@ -4,6 +4,8 @@
 //!
 //! This crate is intended for use by the EOCLU binary.
 
+mod cli;
+
 /// Runs EOCLU.
 ///
 /// This is the entrypoint for EOCLU and is intended to be called by `main` in
