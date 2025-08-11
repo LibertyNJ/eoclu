@@ -8,4 +8,5 @@ use clap::Parser;
 /// more advanced features for users who want to use it to compose a larger
 /// script or other program.
 #[derive(Parser)]
+#[command(name = env!("CARGO_PKG_NAME"))]
 pub struct Cli {}
