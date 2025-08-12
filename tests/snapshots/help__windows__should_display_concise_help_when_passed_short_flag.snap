@@ -1,0 +1,13 @@
+---
+source: tests/help.rs
+expression: snapshot
+---
+stdout:
+A command line utility for EVE Online by CCP Games
+
+Usage: eoclu.exe
+
+Options:
+  -h, --help  Print help (see more with '--help')
+
+stderr:
