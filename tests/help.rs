@@ -4,7 +4,7 @@ use util::assert_output_snapshot;
 
 mod util;
 
-#[cfg(target_family="unix")]
+#[cfg(target_family = "unix")]
 mod unix {
     use super::*;
 
