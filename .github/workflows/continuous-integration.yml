@@ -28,8 +28,8 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Lint
         run: |
-          cargo clippy --verbose \
-          -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic
+          cargo clippy --all-targets --verbose \
+          -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic -Dmissing_docs
   build:
     name: Build ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
@@ -49,7 +49,7 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Build
-        run: cargo build --locked --verbose
+        run: cargo build --all-targets --locked --verbose
   test:
     name: Test ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
@@ -69,4 +69,4 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Test
-        run: cargo test --verbose
+        run: cargo test --all-targets --verbose
