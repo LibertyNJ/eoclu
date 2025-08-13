@@ -29,7 +29,7 @@ jobs:
       - name: Lint
         run: |
           cargo clippy --verbose \
-          -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic
+          -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic -Dmissing_docs
   build:
     name: Build ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
