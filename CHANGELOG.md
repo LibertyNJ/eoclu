@@ -11,5 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Full help text is displayed when passed the `--help` flag.
 - Concise help text is displayed when passed the `-h` flag.
+- Version is displayed when passed the `--version` or `-V` flags.
 
 [unreleased]: https://github.com/LibertyNJ/eoclu/commits/main/

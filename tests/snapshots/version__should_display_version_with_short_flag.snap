@@ -1,0 +1,8 @@
+---
+source: tests/version.rs
+expression: snapshot
+---
+stdout:
+eoclu 0.0.0
+
+stderr:

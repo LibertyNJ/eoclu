@@ -8,6 +8,7 @@ A command line utility for EVE Online by CCP Games
 Usage: eoclu
 
 Options:
-  -h, --help  Print help (see more with '--help')
+  -h, --help     Print help (see more with '--help')
+  -V, --version  Print version
 
 stderr:
