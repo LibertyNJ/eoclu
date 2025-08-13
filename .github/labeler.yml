@@ -25,6 +25,9 @@ readme:
 rust:
   - changed-files:
       - any-glob-to-any-file: "**/*.rs"
+snapshot:
+  - changed-files:
+      - any-glob-to-any-file: "**/*.snap"
 source:
   - changed-files:
       - any-glob-to-any-file: "src/**/*"
