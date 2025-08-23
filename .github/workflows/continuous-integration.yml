@@ -23,7 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Check format
-        run: cargo fmt --all --check --verbose
+        run: |
+          cargo fmt \
+          --all \
+          --check \
+          --verbose
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -34,8 +38,14 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Lint
         run: |
-          cargo clippy --all-targets --verbose \
-          -- -Dclippy::all -Dclippy::cargo -Dclippy::pedantic -Dmissing_docs
+          cargo clippy \
+          --all-targets \
+          --verbose \
+          -- \
+          -Dclippy::all \
+          -Dclippy::cargo \
+          -Dclippy::pedantic \
+          -Dmissing_docs
   build:
     name: Build ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
@@ -55,7 +65,12 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Build
-        run: cargo build --all-targets --locked --verbose
+        run: |
+          cargo build \
+          --all-targets \
+          --locked \
+          --verbose
+        shell: bash
   test:
     name: Test ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
@@ -75,4 +90,8 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Test
-        run: cargo test --all-targets --verbose
+        run: |
+          cargo test \
+          --all-targets \
+          --verbose
+        shell: bash
