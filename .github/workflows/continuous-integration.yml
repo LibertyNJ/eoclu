@@ -53,22 +53,48 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Linux
+          - name: Linux AMD64
             runner: ubuntu-latest
-          - name: macOS
+            artifact-name: linux-amd64
+            build-tool: cargo
+            target-name: x86_64-unknown-linux-gnu
+          - name: Linux ARM64
+            runner: ubuntu-latest
+            artifact-name: linux-arm64
+            build-tool: cross
+            target-name: aarch64-unknown-linux-gnu
+          - name: macOS AMD64
             runner: macos-latest
-          - name: Windows
+            artifact-name: macos-amd64
+            build-tool: cargo
+            target-name: x86_64-apple-darwin
+          - name: macOS ARM64
+            runner: macos-latest
+            artifact-name: macos-arm64
+            build-tool: cargo
+            target-name: aarch64-apple-darwin
+          - name: Windows AMD64
             runner: windows-latest
+            artifact-name: windows-amd64
+            build-tool: cargo
+            target-name: x86_64-pc-windows-msvc
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cache
         uses: Swatinem/rust-cache@v2
+      - name: Install Cross
+        if: matrix.build-tool == 'cross'
+        run: cargo install cross --git https://github.com/cross-rs/cross
+      - name: Install Toolchain
+        if: matrix.build-tool != 'cross'
+        run: rustup target add ${{ matrix.target-name }}
       - name: Build
         run: |
-          cargo build \
+          ${{ matrix.build-tool }} build \
           --all-targets \
           --locked \
+          --target ${{ matrix.target-name }} \
           --verbose
         shell: bash
   test:
@@ -78,22 +104,43 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Linux
+          - name: Linux AMD64
             runner: ubuntu-latest
-          - name: macOS
+            build-tool: cargo
+            target-name: x86_64-unknown-linux-gnu
+          - name: Linux ARM64
+            runner: ubuntu-latest
+            build-tool: cross
+            target-name: aarch64-unknown-linux-gnu
+          - name: macOS AMD64
             runner: macos-latest
-          - name: Windows
+            build-tool: cargo
+            target-name: x86_64-apple-darwin
+          - name: macOS ARM64
+            runner: macos-latest
+            build-tool: cargo
+            target-name: aarch64-apple-darwin
+          - name: Windows AMD64
             runner: windows-latest
+            build-tool: cargo
+            target-name: x86_64-pc-windows-msvc
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cache
         uses: Swatinem/rust-cache@v2
+      - name: Install Cross
+        if: matrix.build-tool == 'cross'
+        run: cargo install cross --git https://github.com/cross-rs/cross
+      - name: Install Toolchain
+        if: matrix.build-tool != 'cross'
+        run: rustup target add ${{ matrix.target-name }}
       - name: Test
         run: |
-          cargo test \
+          ${{ matrix.build-tool }} test \
           --all-targets \
           --locked \
           --no-fail-fast \
+          --target ${{ matrix.target-name }} \
           --verbose
         shell: bash
