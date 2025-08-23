@@ -10,6 +10,15 @@ on:
       - Cargo.lock
       - Cargo.toml
       - rust-toolchain.toml
+  workflow_call:
+    inputs:
+      release:
+        description: |
+          If the workflow should build and test in release mode, and upload the
+          built binaries for further use.
+        required: false
+        default: false
+        type: boolean
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -101,6 +110,7 @@ jobs:
           --all-targets \
           --locked \
           --target ${{ matrix.target-name }} \
+          ${{ inputs.release == true && '--release' || '' }} \
           --verbose
         shell: bash
       - name: Test
@@ -111,5 +121,6 @@ jobs:
           --locked \
           --no-fail-fast \
           --target ${{ matrix.target-name }} \
+          ${{ inputs.release == true && '--release' || '' }} \
           --verbose
         shell: bash
