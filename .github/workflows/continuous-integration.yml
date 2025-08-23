@@ -93,6 +93,7 @@ jobs:
         run: |
           cargo test \
           --all-targets \
+          --locked \
           --no-fail-fast \
           --verbose
         shell: bash
