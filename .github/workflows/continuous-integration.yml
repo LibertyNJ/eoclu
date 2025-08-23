@@ -23,6 +23,11 @@ on:
         required: false
         default: false
         type: boolean
+    outputs:
+      run-id:
+        description: |
+          Run ID of the workflow, useful for downloading build artifacts
+        value: ${{ github.run_id }}
 concurrency:
   group: ${{ github.workflow }}-${{ inputs.branch-name || github.ref }}
   cancel-in-progress: ${{ !contains(inputs.branch-name, 'release/')}}
@@ -77,26 +82,31 @@ jobs:
           - name: Linux AMD64
             runner: ubuntu-latest
             artifact-name: linux-amd64
+            binary-name: eoclu
             build-tool: cargo
             target-name: x86_64-unknown-linux-gnu
           - name: Linux ARM64
             runner: ubuntu-latest
             artifact-name: linux-arm64
+            binary-name: eoclu
             build-tool: cross
             target-name: aarch64-unknown-linux-gnu
           - name: macOS AMD64
             runner: macos-latest
             artifact-name: macos-amd64
+            binary-name: eoclu
             build-tool: cargo
             target-name: x86_64-apple-darwin
           - name: macOS ARM64
             runner: macos-latest
             artifact-name: macos-arm64
+            binary-name: eoclu
             build-tool: cargo
             target-name: aarch64-apple-darwin
           - name: Windows AMD64
             runner: windows-latest
             artifact-name: windows-amd64
+            binary-name: eoclu.exe
             build-tool: cargo
             target-name: x86_64-pc-windows-msvc
     steps:
@@ -136,3 +146,10 @@ jobs:
           ${{ inputs.release == true && '--release' || '' }} \
           --verbose
         shell: bash
+      - name: Upload
+        if: inputs.release == true
+        uses: actions/upload-artifact@v4
+        with:
+          if-no-files-found: error
+          name: ${{ matrix.artifact-name }}
+          path: target/${{ matrix.target-name }}/release/${{ matrix.binary-name }}
