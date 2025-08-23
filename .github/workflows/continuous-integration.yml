@@ -24,8 +24,8 @@ on:
         default: false
         type: boolean
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ inputs.branch-name || github.ref }}
+  cancel-in-progress: ${{ !contains(inputs.branch-name, 'release/')}}
 env:
   CI_REF: ${{ inputs.branch-name || github.head_ref }}
 jobs:
