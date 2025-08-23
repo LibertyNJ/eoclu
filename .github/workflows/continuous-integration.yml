@@ -87,7 +87,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Install Cross
         if: matrix.build-tool == 'cross'
-        run: cargo install cross --git https://github.com/cross-rs/cross
+        run: |
+          cargo install cross \
+          --git https://github.com/cross-rs/cross \
+          --tag v0.2.5
       - name: Install Toolchain
         if: matrix.build-tool != 'cross'
         run: rustup target add ${{ matrix.target-name }}
