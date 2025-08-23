@@ -3,6 +3,13 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - .github/workflows/continuous-integration.yml
+      - '**.rs'
+      - '**.snap'
+      - Cargo.lock
+      - Cargo.toml
+      - rust-toolchain.toml
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
