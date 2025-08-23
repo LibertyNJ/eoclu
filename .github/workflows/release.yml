@@ -223,6 +223,8 @@ jobs:
   cleanup:
     name: Cleanup
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: always()
     needs:
       - create-release-branch
@@ -230,6 +232,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with: 
+          ssh-key: ${{ secrets.RELEASE_DEPLOY_KEY }}
       - name: Delete Release Branch
         if: needs.create-release-branch.result == 'success'
         run: |
