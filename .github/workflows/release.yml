@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          ssh-key: ${{ secrets.RELEASE_DEPLOY_KEY }}
+          ssh-key: "${{ secrets.RELEASE_DEPLOY_KEY }}"
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Install Cargo Release
@@ -170,7 +170,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          ssh-key: ${{ secrets.RELEASE_DEPLOY_KEY }}
+          ssh-key: "${{ secrets.RELEASE_DEPLOY_KEY }}"
       - name: Download Packages
         id: download-packages
         uses: actions/download-artifact@v4
@@ -233,7 +233,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          ssh-key: ${{ secrets.RELEASE_DEPLOY_KEY }}
+          ssh-key: "${{ secrets.RELEASE_DEPLOY_KEY }}"
       - name: Delete Release Branch
         if: needs.create-release-branch.result == 'success'
         run: |
