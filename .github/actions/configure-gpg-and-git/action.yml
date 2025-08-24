@@ -30,7 +30,7 @@ runs:
         mkdir -p ~/.gnupg
         echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
         gpgconf --launch gpg-agent
-        echo "${{ inputs.gpg-private-key }}" | gpg -- batch --import
+        echo "${{ inputs.gpg-private-key }}" | gpg --batch --import
         KEY_ID=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec/{print $5}' | head -n1)
         echo "${{ inputs.gpg-passphrase }}" | gpg --batch --pinentry-mode loopback \
         --passphrase-fd 0 --edit-key "$KEY_ID" trust quit
