@@ -140,6 +140,7 @@ jobs:
         run: |
           mkdir dist
           cp build/eoclu dist/
+          chmod +x dist/eoclu
           cp CHANGELOG.md LICENSE-* README.md dist/
           tar -czvf "${{ steps.determine-archive-name.outputs.archive-file-name }}" \
             -C dist .
