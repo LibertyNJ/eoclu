@@ -86,7 +86,7 @@ jobs:
     uses: ./.github/workflows/continuous-integration.yml
     with:
       branch-name: ${{ needs.create-release-branch.outputs.release-branch-name }}
-  build:
+  package:
     name: Package ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
     needs:
@@ -163,8 +163,8 @@ jobs:
       contents: write
       id-token: write
     needs:
-      - build
       - create-release-branch
+      - package
       - plan-release
     steps:
       - name: Checkout
