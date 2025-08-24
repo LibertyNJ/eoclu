@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Extract Release Notes
         id: extract-release-notes
-        uses: ./github/actions/extract-release-notes
+        uses: ./.github/actions/extract-release-notes
       - name: Determine Release Level
         id: determine-release-level
         uses: ./.github/actions/determine-release-level
