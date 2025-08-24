@@ -222,7 +222,6 @@ jobs:
           discussion_category_name: Releases
           fail_on_unmatched_files: true
           files: ./packages/*
-          generate_release_notes: true
           name: ${{ needs.create-release-branch.outputs.release-version }}
           preserve_order: true
           tag_name: ${{ needs.create-release-branch.outputs.release-tag-name }}
