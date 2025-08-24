@@ -15,13 +15,14 @@ runs:
     - name: Determine Release Level
       id: determine-release-level
       run: |
+        RELEASE_NOTES='${{ inputs.release-notes }}'
         RELEASE_LEVEL="none"
 
-        if echo "${{ inputs.release-notes }}" | grep -q '\*\*BREAKING\*\*:'; then
+        if grep -q '\*\*BREAKING\*\*:' <<< "$RELEASE_NOTES"; then
           RELEASE_LEVEL="major"
-        elif echo "${{ inputs.release-notes }}" | grep -q '^### \(Added\|Deprecated\)'; then
+        elif grep -q '^### \(Added\|Deprecated\)' <<< "$RELEASE_NOTES"; then
           RELEASE_LEVEL="minor"
-        elif echo "${{ inputs.release-notes }}" | grep -q '^### \(Changed\|Fixed\|Removed\|Security\)'; then
+        elif grep -q '^### \(Changed\|Fixed\|Removed\|Security\)' <<< "$RELEASE_NOTES"; then
           RELEASE_LEVEL="patch"
         fi
 
