@@ -134,11 +134,12 @@ jobs:
         with:
           run-id: ${{ needs.continuous-integration.outputs.run-id }}
           name: ${{ matrix.artifact-name }}
+          path: ./build/
       - name: Package Unix
         if: matrix.runner != 'windows-latest'
         run: |
           mkdir dist
-          cp ${{ steps.download-build-artifact.outputs.download-path }} dist/
+          cp build/eoclu dist/
           cp CHANGELOG.md LICENSE-* README.md dist/
           tar -czvf "${{ steps.determine-archive-name.outputs.archive-file-name }}" \
             -C dist .
@@ -146,7 +147,7 @@ jobs:
         if: matrix.runner == 'windows-latest'
         run: |
           New-Item -ItemType Directory -Path dist
-          Copy-Item -Path ${{ steps.download-build-artifact.outputs.download-path }} -Destination dist\
+          Copy-Item -Path build\eoclu.exe -Destination dist\
           Get-ChildItem -Path LICENSE-* | Copy-Item -Destination dist\
           Copy-Item -Path CHANGELOG.md -Destination dist\
           Copy-Item -Path README.md -Destination dist\
