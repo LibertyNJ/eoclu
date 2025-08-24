@@ -156,6 +156,7 @@ jobs:
         with:
           if-no-files-found: error
           name: ${{ matrix.artifact-name }}
+          overwrite: true
           path: ${{ steps.determine-archive-name.outputs.archive-file-name }}
   release:
     name: Release
