@@ -128,16 +128,17 @@ jobs:
           ARCHIVE_FILE_NAME="eoclu-${{ needs.create-release-branch.outputs.release-tag-name }}-${{ matrix.artifact-name }}.${{ matrix.archive-ext }}"
           echo "archive-file-name=$ARCHIVE_FILE_NAME" >> "$GITHUB_OUTPUT"
         shell: bash
-      - name: Download Build Artifacts
-        id: download-build-artifacts
+      - name: Download Build Artifact
+        id: download-build-artifact
         uses: actions/download-artifact@v4
         with:
           run-id: ${{ needs.continuous-integration.outputs.run-id }}
+          name: ${{ matrix.artifact-name }}
       - name: Package Unix
         if: matrix.runner != 'windows-latest'
         run: |
           mkdir dist
-          cp ${{ steps.download-build-artifacts.outputs.download-path }}/${{ matrix.artifact-name }}/eoclu dist/
+          cp ${{ steps.download-build-artifact.outputs.download-path }}/${{ matrix.artifact-name }}/eoclu dist/
           cp CHANGELOG.md LICENSE-* README.md dist/
           tar -czvf "${{ steps.determine-archive-name.outputs.archive-file-name }}" \
             -C dist .
@@ -145,7 +146,7 @@ jobs:
         if: matrix.runner == 'windows-latest'
         run: |
           New-Item -ItemType Directory -Path dist
-          Copy-Item -Path ${{ steps.download-build-artifacts.outputs.download-path }}\${{ matrix.artifact-name }}\eoclu.exe -Destination dist\
+          Copy-Item -Path ${{ steps.download-build-artifact.outputs.download-path }}\${{ matrix.artifact-name }}\eoclu.exe -Destination dist\
           Get-ChildItem -Path LICENSE-* | Copy-Item -Destination dist\
           Copy-Item -Path CHANGELOG.md -Destination dist\
           Copy-Item -Path README.md -Destination dist\
