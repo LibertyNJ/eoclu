@@ -1,0 +1,38 @@
+name: Extract Release Notes
+description: Extracts unreleased changes from the changelog.
+outputs:
+  release-notes:
+    description: Extracted release notes from the changelog.
+    value: ${{ steps.extract-release-notes.outputs.release-notes }}
+runs:
+  using: composite
+  steps:
+    - name: Extract Release Notes
+      id: extract-release-notes
+      run: |
+        CHANGELOG_FILE_NAME="CHANGELOG.md"
+
+        if [ ! -f "$CHANGELOG_FILE_NAME" ]; then
+          echo "Error: $CHANGELOG_FILE_NAME not found!" >&2
+          exit 1
+        fi
+
+        RELEASE_NOTES=$(awk '
+        /## \[Unreleased\]/ { in_unreleased = 1; next }
+        /^## / && in_unreleased == 1 { in_unreleased = 0 }
+        /\[unreleased\]:/ { exit }
+        in_unreleased == 1 { lines[++n] = $0 }
+        END {
+          start = 1
+          while (start <= n && lines[start] ~ /^[ \t]*$/) start++
+          end = n
+          while (end >= start && lines[end] ~ /^[ \t]*$/) end--
+          for (i = start; i <= end; i++) print lines[i]
+        }' "$CHANGELOG_FILE_NAME")
+
+        {
+          echo 'release-notes<<EOF'
+          echo "$RELEASE_NOTES"
+          echo 'EOF'
+        } >> "$GITHUB_OUTPUT"
+      shell: bash

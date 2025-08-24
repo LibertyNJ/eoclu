@@ -1,0 +1,29 @@
+name: Determine Release Level
+description: |
+  Determines the most significant release level by reading release notes.
+inputs:
+  release-notes:
+    description: Release notes from which to determine the release level.
+    required: true
+outputs:
+  release-level:
+    description: Most significant release level based on the release notes.
+    value: ${{ steps.determine-release-level.outputs.release-level }}
+runs:
+  using: composite
+  steps:
+    - name: Determine Release Level
+      id: determine-release-level
+      run: |
+        RELEASE_LEVEL="none"
+
+        if echo "${{ inputs.release-notes }}" | grep -q '\*\*BREAKING\*\*:'; then
+          RELEASE_LEVEL="major"
+        elif echo "${{ inputs.release-notes }}" | grep -q '^### \(Added\|Deprecated\)'; then
+          RELEASE_LEVEL="minor"
+        elif echo "${{ inputs.release-notes }}" | grep -q '^### \(Changed\|Fixed\|Removed\|Security\)'; then
+          RELEASE_LEVEL="patch"
+        fi
+
+        echo "release-level=$RELEASE_LEVEL" >> "$GITHUB_OUTPUT"
+      shell: bash

@@ -1,0 +1,9 @@
+pre-release-commit-message = "Increment version to {{version}}"
+pre-release-replacements = [
+    { file = "CHANGELOG.md", search = "\\[Unreleased\\]", replace = "[{{version}}] - {{date}}", exactly = 1 },
+    { file = "CHANGELOG.md", search = "\\[unreleased\\]:", replace = "[{{version}}]:", exactly = 1 },
+    { file = "CHANGELOG.md", search = "\\.\\.\\.HEAD", replace = "...{{tag_name}}", exactly = 1 },
+    { file = "tests/snapshots/version__should_display_version_when_passed_long_flag.snap", search = "eoclu \\d+\\.\\d+\\.\\d+", replace = "eoclu {{version}}", exactly = 1 },
+    { file = "tests/snapshots/version__should_display_version_when_passed_short_flag.snap", search = "eoclu \\d+\\.\\d+\\.\\d+", replace = "eoclu {{version}}", exactly = 1 },
+]
+tag-message = "Version {{version}}"

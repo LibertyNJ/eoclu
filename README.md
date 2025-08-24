@@ -11,6 +11,19 @@ users who are curious and may be new to this kind of thing, but also offer more
 advanced features for users who want to use it to compose a larger script or
 other program.
 
+## Getting Started
+
+EOCLU is distributed as a single binary compiled for Linux, macOS, or Windows.
+
+1. Select the release package that is appropriate for your operating system and
+   processor architecture.
+2. Extract the `.tar.gz` (`.zip` on Windows) archive.
+3. Place `eoclu` (`eoclu.exe` on Windows) in a location of your choice. You may
+   want to ensure that the location is in
+   [`PATH`](<https://en.wikipedia.org/wiki/PATH_(variable)>) for your system if
+   you would like to be able to access the utility globally.
+4. Run `eoclu --help` from your terminal to see available commands and options.
+
 ## License
 
 Licensed under either of
