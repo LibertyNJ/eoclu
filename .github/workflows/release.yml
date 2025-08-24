@@ -86,6 +86,7 @@ jobs:
     uses: ./.github/workflows/continuous-integration.yml
     with:
       branch-name: ${{ needs.create-release-branch.outputs.release-branch-name }}
+      release: true
   package:
     name: Package ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
