@@ -31,16 +31,16 @@ runs:
         echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
         gpgconf --launch gpg-agent
         echo "${{ inputs.gpg-private-key }}" | gpg --batch --import
-        KEY_ID=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec/{print $5}' | head -n1)
+        FINGERPRINT=$(gpg --list-secret-keys --with-colons | awk -F: '/^fpr/{print $10}' | head -n1)
         gpg --batch --pinentry-mode loopback --passphrase "${{ inputs.gpg-passphrase }}" \
-        --sign --default-key "$KEY_ID" --output /dev/null <<< "preload"
-        echo "$KEY_ID:6:" | gpg --import-ownertrust
-        echo "key-id=$KEY_ID" >> "$GITHUB_OUTPUT"
+        --sign --default-key "$FINGERPRINT" --output /dev/null <<< "preload"
+        echo "$FINGERPRINT:6:" | gpg --import-ownertrust
+        echo "fingerprint=$FINGERPRINT" >> "$GITHUB_OUTPUT"
       shell: bash
     - name: Configure Git
       run: |
         git config user.name "${{ inputs.git-user-name }}"
         git config user.email "${{ inputs.git-user-email }}"
-        git config user.signingkey "${{ steps.import-gpg-key.outputs.key-id }}"
+        git config user.signingkey "${{ steps.import-gpg-key.outputs.fingerprint }}"
         git config commit.gpgsign true
       shell: bash
