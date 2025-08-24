@@ -42,4 +42,5 @@ runs:
         git config user.name "${{ inputs.git-user-name }}"
         git config user.email "${{ inputs.git-user-email }}"
         git config user.signingkey "${{ steps.import-gpg-key.outputs.key-id }}"
+        git config commit.gpgsign true
       shell: bash
