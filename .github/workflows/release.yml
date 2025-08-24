@@ -199,6 +199,8 @@ jobs:
           git-user-name: "${{ vars.GIT_USER_NAME }}"
           gpg-passphrase: "${{ secrets.GPG_PASSPHRASE }}"
           gpg-private-key: "${{ secrets.GPG_PRIVATE_KEY }}"
+      - name: Fetch Release Branch
+        run: git fetch origin ${{ needs.create-release-branch.outputs.release-branch-name }}
       - name: Merge Release Branch
         run: git merge ${{ needs.create-release-branch.outputs.release-branch-name }} --ff-only
       - name: Create Tag
