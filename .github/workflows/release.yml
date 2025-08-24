@@ -165,6 +165,7 @@ jobs:
     permissions:
       attestations: write
       contents: write
+      discussions: write
       id-token: write
     needs:
       - create-release-branch
