@@ -1,6 +1,6 @@
 [package]
 name = "eoclu"
-version = "0.1.0"
+version = "0.1.1"
 categories = ["command-line-utilities", "games"]
 edition = "2024"
 keywords = ["eve", "eve_online"]
