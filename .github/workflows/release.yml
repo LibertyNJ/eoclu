@@ -206,7 +206,7 @@ jobs:
       - name: Fetch Release Branch
         run: git fetch origin ${{ needs.create-release-branch.outputs.release-branch-name }}
       - name: Merge Release Branch
-        run: git merge ${{ needs.create-release-branch.outputs.release-branch-name }} --ff-only
+        run: git merge FETCH_HEAD --ff-only
       - name: Create Tag
         run: |
           git tag --sign ${{ needs.create-release-branch.outputs.release-tag-name }} \
