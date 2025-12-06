@@ -120,7 +120,7 @@ jobs:
         run: rustup target add ${{ matrix.target-name }}
       - name: Build
         run: |
-          RUSTFLAGS=-DWarnings \
+          RUSTFLAGS=-Dwarnings \
           ${{ matrix.build-tool }} build \
           --all-targets \
           --locked \
@@ -130,7 +130,7 @@ jobs:
         shell: bash
       - name: Test
         run: |
-          RUSTFLAGS=-DWarnings \
+          RUSTFLAGS=-Dwarnings \
           ${{ matrix.build-tool }} test \
           --all-targets \
           --locked \
